@@ -1,13 +1,10 @@
 FROM ubuntu:18.04
+LABEL maintainer="aaron@spettl.de"
 
-MAINTAINER matthew.mattox@rancher.com
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && apt-get install -yq --no-install-recommends \
-    apt-utils \
-    curl \
-    ca-certificates \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
+      apt-utils \
+      curl \
+      ca-certificates \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ## Install kubectl
