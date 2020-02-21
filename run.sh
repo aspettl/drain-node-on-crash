@@ -75,7 +75,7 @@ do
 						fi
 						if [ $count -gt $NODE_TIMEOUT ]
 						then
-							echo "$node has been down for greater than 5Mins, assuming node is down for good."
+							echo "$node has been down for greater than $NODE_TIMEOUT seconds, assuming node is down for good."
 							echo "Starting drain of node..."
 							kubectl drain $node --ignore-daemonsets --delete-local-data --force --grace-period=5 --timeout=60s
 							kubectl patch $node -p '{"spec":{"unschedulable":true}}'
@@ -122,7 +122,7 @@ do
 									echo "Scaling back down to 1..."
 									kubectl scale --replicas=1 deployment/cattle-cluster-agent -n cattle-system
 								else
-									echo "cattle-cluster-agent is alreayd running..."
+									echo "cattle-cluster-agent is already running..."
 								fi
 							fi
 							break
