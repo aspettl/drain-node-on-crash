@@ -14,13 +14,13 @@ echo "Auto uncordon node on recovery is $AUTO_UNCORDON"
 
 if [[ -z $REMOVE_PODS ]]
 then
-        REMOVE_PODS=true
+	REMOVE_PODS=true
 fi
 echo "Remove all pods from drained node is $REMOVE_PODS"
 
 if [[ -z $CATTLE_CLUSTER_AGENT ]]
 then
-        CATTLE_CLUSTER_AGENT=true
+	CATTLE_CLUSTER_AGENT=true
 fi
 
 touch ~/drained_nodes
@@ -70,7 +70,7 @@ do
 						else
 							echo "$node is now ready"
 							cat ~/drained_nodes | grep -v -x $node > ~/drained_nodes.tmp
-			                                mv ~/drained_nodes.tmp ~/drained_nodes
+							mv ~/drained_nodes.tmp ~/drained_nodes
 							break
 						fi
 						if [ $count -gt $NODE_TIMEOUT ]
@@ -113,11 +113,11 @@ do
 									while ! kubectl get pods -n cattle-system | grep ^'cattle-cluster-agent-' | awk '{print $3}' | grep "Running"
 									do
 										sleep 1
-                                                                                cattlecount=$((cattlecount+1))
-                                                                                if [ $cattlecount -gt 60 ]
-                                                                                then
-                                                                                        break
-                                                                                fi
+										cattlecount=$((cattlecount+1))
+										if [ $cattlecount -gt 60 ]
+										then
+											break
+										fi
 									done
 									echo "Scaling back down to 1..."
 									kubectl scale --replicas=1 deployment/cattle-cluster-agent -n cattle-system
