@@ -32,7 +32,7 @@ spec:
       serviceAccountName: drain-node-on-crash
       containers:
         - name: drain
-          image: cube8021/drain-node-on-crash:v1.7
+          image: aspettl/drain-node-on-crash:v1.7.1
           env:
             - name: NODE_TIMEOUT
               value: "360"

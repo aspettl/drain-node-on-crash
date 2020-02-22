@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  controller:
+    build: .
+    image: aspettl/drain-node-on-crash:v1.7.1
