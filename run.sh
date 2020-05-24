@@ -135,6 +135,6 @@ do
 	else
 		echo "Standby"
 	fi
-	echo "Sleeping for 5s before rechecking..."
-	sleep 5
+	echo "Sleeping for 10s before rechecking..."
+	sleep 10
 done
